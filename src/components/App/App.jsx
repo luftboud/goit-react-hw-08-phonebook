@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Route, Routes } from "react-router-dom";
 // import { nanoid } from 'nanoid';
 // import css from './App.module.css';
-import { getAllContacts } from 'store/Contacts/contactsSlice';
-import { useDispatch } from 'react-redux';
+// import { getAllContacts } from 'store/Contacts/contactsSlice';
+// import { useDispatch } from 'react-redux';
 import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 import HeaderLayout from 'components/Layers/HeaderLayout/HeaderLayout';
 import { HomePage } from 'pages/HomePage/HomePage';
@@ -14,10 +14,6 @@ axios.defaults.baseURL = "https://connections-api.herokuapp.com"
 
 
 const App = () => {
-  const dispatch = useDispatch();
-   useEffect(() => {
-    dispatch(getAllContacts());
-  }, [dispatch]);
 
   return (    
 
