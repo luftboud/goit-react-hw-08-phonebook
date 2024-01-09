@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Route, Routes } from "react-router-dom";
 // import { nanoid } from 'nanoid';
-import css from './App.module.css';
+// import css from './App.module.css';
 import { getAllContacts } from 'store/Contacts/contactsSlice';
 import { useDispatch } from 'react-redux';
 import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
