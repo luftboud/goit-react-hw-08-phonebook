@@ -5,9 +5,12 @@ const authInitialState = {
     user: {},
     token: '',
     error: null,
-    isLoading: false
+    isLoading: false //TODO use this somewhere idk
 };
 
+const setToken = (token) => {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
 const handlePending = (state, { payload }) => {
     state.isLoading = true
     state.error = null
@@ -24,16 +27,18 @@ export const registration = createAsyncThunk('auth/register', async (body) => {
         console.log(body);
         const response = await axios.post('/users/signup', body)
         console.log(response.data);
+        setToken(response.data.token)
         return response.data
     } catch (e) {
       return e
     }
 })
-export const logingIn = createAsyncThunk('auth/login', async (body) => {
+export const loggingIn = createAsyncThunk('auth/login', async (body) => {
     try {
         console.log(body);
-        const response = await axios.post('/users/signup', body)
+        const response = await axios.post('/users/login', body)
         console.log(response.data);
+        setToken(response.data.token)
         return response.data
     } catch (e) {
       return e
@@ -51,8 +56,17 @@ const authSlice = createSlice({
                 state.token = payload.token;
             })
             .addCase(registration.rejected, handleRejected)
+            //
+            .addCase(loggingIn.pending, handlePending)
+            .addCase(loggingIn.fulfilled, (state, { payload }) => {
+                state.user = payload.user;
+                state.token = payload.token;
+                console.log(payload.token);
+            })
+            .addCase(loggingIn.rejected, handleRejected)
             
     },
 })
 
 export const authReducer = authSlice.reducer;
+

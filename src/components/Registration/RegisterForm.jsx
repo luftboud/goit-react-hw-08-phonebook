@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Heading, Input } from "@chakra-ui/react"
+// import { Heading, Input } from "@chakra-ui/react"
 import { Link } from "react-router-dom";
 import { registration } from "store/Authorization/authSlice";
 
@@ -8,7 +8,6 @@ import { registration } from "store/Authorization/authSlice";
 export const RegisterForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [password, setPassword] = useState('');
     const [name, setName] = useState('');
 
     const dispatch = useDispatch();
@@ -18,7 +17,7 @@ export const RegisterForm = () => {
     dispatch(registration(body))
     }
 
-     const handleChange = evt => {
+    const handleChange = evt => {
     const { name } = evt.target;
      const value = evt.target.value;
      if (name === "email") {

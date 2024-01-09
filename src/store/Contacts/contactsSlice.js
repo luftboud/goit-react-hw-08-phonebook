@@ -7,6 +7,7 @@ const contactsInitialState = {
     error: null 
 };
 
+
 const handlePending = (state, { payload }) => {
     state.isLoading = true
     state.error = null
@@ -18,9 +19,9 @@ const handleRejected = (state, { payload }) => {
 
 export const getAllContacts = createAsyncThunk('contacts/fetchAll', async () => {
     try {
-        // const response = await axios.get('/contacts')
-        // console.log(response.data);
-        // return response.data
+        const response = await axios.get('/contacts')
+        console.log(response.data);
+        return response.data
     } catch (e) {
       return e
     }

@@ -6,7 +6,7 @@ import { authReducer } from "./Authorization/authSlice";
 
 
 export const reducer = combineReducers({
-    // contacts: contactsReducer,
+    contacts: contactsReducer,
     filter: filterReducer,
     auth: authReducer
 })
