@@ -47,7 +47,7 @@ export const RegisterForm = () => {
     };
 
     return (
-        <div className={css.Box}>
+         <div className={css.Box}>
                     <h1>Create an account</h1>
             <form
                 className={css.Form}
@@ -79,6 +79,6 @@ export const RegisterForm = () => {
                     <p>
                         Or <Link to="/login" className={css.Link}>log in</Link> if you already have an account
                     </p>
-            </div>
+            </div> 
     )
 }

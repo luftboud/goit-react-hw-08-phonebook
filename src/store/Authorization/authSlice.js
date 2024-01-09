@@ -5,7 +5,7 @@ const authInitialState = {
     user: {},
     token: '',
     error: null,
-    isLoading: false //TODO use this somewhere idk
+    isLoading: false 
 };
 
 
@@ -64,6 +64,7 @@ const authSlice = createSlice({
             .addCase(registration.fulfilled, (state, { payload }) => {
                 state.user = payload.user;
                 state.token = payload.token;
+                state.isLoading = false
             })
             .addCase(registration.rejected, handleRejected)
             //
@@ -71,6 +72,7 @@ const authSlice = createSlice({
             .addCase(loggingIn.fulfilled, (state, { payload }) => {
                 state.user = payload.user;
                 state.token = payload.token;
+                state.isLoading = false
                 // console.log(payload.token);
             })
             .addCase(loggingIn.rejected, handleRejected)
@@ -78,6 +80,7 @@ const authSlice = createSlice({
         .addCase(loggingOut.pending, handlePending)
             .addCase(loggingOut.fulfilled, (state, { payload }) => {
                 state.token = '';
+                state.isLoading = false
             })
             .addCase(loggingOut.rejected, handleRejected)
             
