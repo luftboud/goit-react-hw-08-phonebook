@@ -1,0 +1,31 @@
+.Navbar {
+    display: flex;
+    background-color: #09290e;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+}
+.List {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    gap: 14px;
+}
+.Link {
+    color: #b2d5be;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.Link:hover {
+    color: rgb(212, 238, 210);
+}
+.Loader {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding-top: 300px;
+    text-transform: uppercase;
+    font-size: 35px;
+}
