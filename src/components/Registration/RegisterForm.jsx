@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 // import { Heading, Input } from "@chakra-ui/react"
 import { Link } from "react-router-dom";
 import { registration } from "store/Authorization/authSlice";
-
+import css from '../../pages/RegisterPage/RegisterPage.module.css'
 
 export const RegisterForm = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +13,7 @@ export const RegisterForm = () => {
     const dispatch = useDispatch();
 
     const registrateUser = (body) => {
-    console.log(body);
+    // console.log(body);
     dispatch(registration(body))
     }
 
@@ -41,15 +41,16 @@ export const RegisterForm = () => {
             window.alert('Your passwords do not match!');
             return
         }
-        console.log(`email: ${userEmail}, name: ${userName}, password: ${userPassword}`);
+        // console.log(`email: ${userEmail}, name: ${userName}, password: ${userPassword}`);
         registrateUser({email: userEmail, name: userName, password: userPassword})
         evt.target.reset() 
     };
 
     return (
-        <div>
+        <div className={css.Box}>
                     <h1>Create an account</h1>
             <form
+                className={css.Form}
                 action="submit"
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -73,10 +74,10 @@ export const RegisterForm = () => {
                         <input
                             placeholder='Repeat password'
                         />
-                        <button type="submit"> submit</button>
+                        <button type="submit" className={css.SubmitButton}> Submit</button>
                     </form>
                     <p>
-                        Or <Link to="/login">log in</Link> if you already have an account
+                        Or <Link to="/login" className={css.Link}>log in</Link> if you already have an account
                     </p>
             </div>
     )

@@ -7,6 +7,9 @@ const contactsInitialState = {
     error: null 
 };
 
+const setToken = (token) => {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
 
 const handlePending = (state, { payload }) => {
     state.isLoading = true
@@ -17,10 +20,10 @@ const handleRejected = (state, { payload }) => {
     state.error = payload
 }
 
-export const getAllContacts = createAsyncThunk('contacts/fetchAll', async () => {
+export const getAllContacts = createAsyncThunk('contacts/fetchAll', async (token) => {
     try {
+        setToken(token)
         const response = await axios.get('/contacts')
-        console.log(response.data);
         return response.data
     } catch (e) {
       return e

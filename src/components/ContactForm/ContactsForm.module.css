@@ -1,0 +1,23 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.ContactInput {
+    height: 35px;
+    width: 50%;
+    box-sizing: border-box;
+    border: 2px solid #092607a3;
+    border-radius: 5px;
+}
+.SubmitButton {
+    width: 15%;
+    height: 30px;
+    border: 2px solid #092607a3;
+    border-radius: 5px;
+    background-color: #234f26;
+    color: #fff;
+}
+.SubmitButton:hover {
+    background-color: #2f6a33;
+}

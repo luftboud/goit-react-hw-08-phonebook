@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { setContact } from 'store/Contacts/contactsSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import css from './ContactsForm.module.css'
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -10,7 +11,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   
   const addContact = (cont) => {
-    console.log(cont);
+    // console.log(cont);
     dispatch(setContact(cont))
   }
 
@@ -37,13 +38,14 @@ const ContactForm = () => {
       window.alert('Please, fill all fields.');
       return
     }
-     console.log(`name: ${contName}, number: ${phNumber}`);
+    //  console.log(`name: ${contName}, number: ${phNumber}`);
     addContact({name: contName, number: phNumber})
   };
   return (
-    <form onSubmit={(e) => { e.preventDefault(); handleSubmit(name, number);  e.target.reset()}}>
+    <form className={css.Form} onSubmit={(e) => { e.preventDefault(); handleSubmit(name, number);  e.target.reset()}}>
       <h3>Name</h3>
       <input
+        className={css.ContactInput}
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -52,8 +54,8 @@ const ContactForm = () => {
         onChange={handleChange}
       />
       <h3>Number</h3>
-      <input type="tel" name="number" onChange={handleChange}></input>
-      <button type="submit">Add contact</button>
+      <input className={css.ContactInput} type="tel" name="number" onChange={handleChange}></input>
+      <button className={css.SubmitButton} type="submit">Add contact</button>
     </form>
   );
 };

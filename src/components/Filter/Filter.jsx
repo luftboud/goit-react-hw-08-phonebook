@@ -1,6 +1,7 @@
 
 import { useDispatch } from 'react-redux';
 import { setFilterAction } from 'store/Filter/filterSlice';
+import css from './Filter.module.css'
 const Filter = () => {
   const dispatch = useDispatch();
   
@@ -15,7 +16,7 @@ const Filter = () => {
   return (
     <>
       <h3>Find contacts by name</h3>
-      <input type="text" onChange={handleSearch} />
+      <input className={css.Input} type="text" onChange={handleSearch} />
     </>
   );
 };

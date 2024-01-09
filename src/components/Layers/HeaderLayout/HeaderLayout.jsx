@@ -7,11 +7,13 @@ import { useSelector } from "react-redux";
 const HeaderLayout = () => {
     const token = useSelector((state) => state.auth.token)
     const noAccount = token === '';
-    console.log(noAccount);
     return (
         <>
         <nav className={css.Navbar}>
           <ul className={css.List}>
+            <li>
+               <NavLink to="/" className={css.Link}>Home</NavLink>
+            </li>
             <li>
                <NavLink to="/contacts" className={css.Link} >Contacts</NavLink>
             </li>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loggingIn } from "store/Authorization/authSlice";
-
+import css from '../../pages/LoginPage/LoginPage.module.css'
 
 export const LoginForm = () => {
     const [show, setShow] = useState(false)
@@ -15,7 +15,7 @@ export const LoginForm = () => {
     const dispatch = useDispatch();
 
     const loginUser = (body) => {
-    console.log(body);
+    // console.log(body);
     dispatch(loggingIn(body))
     }
     
@@ -35,16 +35,17 @@ export const LoginForm = () => {
              window.alert('Please, fill all fields.');
             return
         }
-        console.log(`email: ${userEmail}, password: ${userPassword}`);
+        // console.log(`email: ${userEmail}, password: ${userPassword}`);
         loginUser({email: userEmail, password: userPassword})
         evt.target.reset() 
     };
 
     const handleClick = () => setShow(!show)
     return (
-        <>
+        <div className={css.Box}>
             <Heading as='h1' size='xl'>Log in</Heading>
             <form
+                className={css.Form}
                 action="submit"
                  onSubmit={(e) => {
                     e.preventDefault();
@@ -65,16 +66,16 @@ export const LoginForm = () => {
                         placeholder='Enter password'
                         onChange={handleChange}
                     />
-                    <InputRightElement width='4.5rem'>
+                    <InputRightElement width='4.5rem' className={css.ShowButton}>
                         <Button h='1.75rem' size='sm' onClick={handleClick}>
                             {show ? 'Hide' : 'Show'}
                         </Button >
                     </InputRightElement>
                 </InputGroup>
-                <button type="submit">Log In</button>
+                <button type="submit" className={css.SubmitButton}>Log In</button>
             </form>
-            <p>Or <Link to="/register"> register
+            <p>Or <Link to="/register" className={css.Link}> register
             </Link> if you don't have an account yet!</p>
-    </>
+    </div>
     )
 }

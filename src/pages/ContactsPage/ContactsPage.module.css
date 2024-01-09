@@ -1,0 +1,11 @@
+.Box {
+    padding: 20px;
+    background-color: #fff;
+    margin: 5%;
+    width: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-family: Nunito;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+}
